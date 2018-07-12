@@ -2,6 +2,8 @@ const OSC = require('osc-js')
 const express = require('express')
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+ioClient = require('socket.io-client')
+var socket = ioClient.connect("https://nuxt-websocket.herokuapp.com/");
 
 const HTTP_SERVER_PORT = 3000
 const OSC_SERVER_PORT = 9000
@@ -26,6 +28,16 @@ app.listen(HTTP_SERVER_PORT, () => {
 
 // OSC websocket server
 const osc = new OSC({ plugin: new OSC.BridgePlugin(config) })
+
+socket.on('time', (data) => {
+  console.log(data)
+})
+
+setInterval(() => {
+  data = new Date().toTimeString()
+  console.log(data)
+  socket.emit('dist', data)
+}, 1000);
 
 let interval
 
