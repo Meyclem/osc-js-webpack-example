@@ -10,9 +10,9 @@ This is a simple example for OSC communication between a website and a *NodeJS* 
 ## Setup
 
 ```
-git clone git@github.com:adzialocha/osc-js-webpack-example.git
+git clone git@github.com:Meyclem/osc-js-webpack-example.git
 cd osc-js-webpack-example
-npm install
+yarn install
 ```
 
 ## Run example
